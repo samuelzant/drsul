@@ -18,7 +18,26 @@ da mesma rede acessa pelo navegador — sem precisar de internet.
 - [Node.js](https://nodejs.org) versão 18 ou superior instalado no PC que vai
   ser o servidor (não precisa instalar nada no outro PC, só ter um navegador).
 
-## Instalação (uma vez, no PC servidor)
+## Instalação e uso no Windows (jeito fácil)
+
+O projeto já vem com dois scripts prontos na pasta raiz:
+
+- **`instalar.bat`** — roda uma única vez (ou depois de atualizar o código).
+  Instala tudo automaticamente e gera o build da interface.
+- **`iniciar.bat`** — usa no dia a dia. Liga o servidor, mostra o endereço
+  para acessar e já abre o navegador.
+
+Basta dar **duplo clique** em `instalar.bat` primeiro e, depois que terminar,
+duplo clique em `iniciar.bat` sempre que for usar o sistema. Os scripts
+verificam se o Node.js está instalado e avisam o que fazer se algo estiver
+faltando.
+
+> Se o Windows perguntar sobre o Node.js acessando a rede, escolha
+> **Permitir acesso** (redes privadas).
+
+## Instalação manual (Windows, Linux ou Mac)
+
+Se preferir não usar os `.bat`, ou estiver em Linux/Mac:
 
 ```bash
 # 1. Instalar dependências do backend
@@ -31,7 +50,7 @@ npm install
 npm run build
 ```
 
-## Rodando o sistema
+### Rodando o sistema manualmente
 
 No PC servidor:
 
@@ -50,8 +69,11 @@ Acesse do outro computador usando o IP deste PC na rede local, ex: http://192.16
 
 ### Descobrindo o IP do PC servidor
 
-- **Windows**: abra o `cmd` e digite `ipconfig`. Use o "Endereço IPv4" (algo
-  como `192.168.0.10`).
+- **Windows**: o `iniciar.bat` já tenta detectar e mostrar o IP automaticamente.
+  Se o outro PC não conseguir conectar, confirme manualmente digitando
+  `ipconfig` no `cmd` e usando o "Endereço IPv4" da placa de rede que está em
+  uso (Wi-Fi ou Ethernet) — evite endereços de adaptadores virtuais como
+  VPN/VirtualBox.
 - **Linux/Mac**: no terminal, digite `hostname -I` ou `ip addr`.
 
 ### Acessando do outro computador (cliente)
